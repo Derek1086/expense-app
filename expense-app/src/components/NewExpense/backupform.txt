@@ -1,0 +1,226 @@
+//import React, { useState } from "react";
+
+import Modal from "../UI/Modal";
+
+import useInput from "../hooks/use-input";
+
+import classes from "./ExpenseForm.module.css";
+
+// const isEmpty = (value) => value.trim() === "";
+// const isDate = (value) => new Date(value).toString() !== "Invalid Date";
+
+const ExpenseForm = (props) => {
+  const {
+    value: enteredName,
+    hasError: nameHasError,
+    isValid: enteredNameIsValid,
+    valueChangeHandler: nameChangeHandler,
+    valueBlurHandler: nameBlurHandler,
+    reset: resetName
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: enteredAmount,
+    hasError: amountHasError,
+    isValid: enteredAmountIsValid,
+    valueChangeHandler: amountChangeHandler,
+    valueBlurHandler: amountBlurHandler,
+    reset: resetAmount
+  } = useInput((value) => value.trim() !== "" && +value > 0);
+
+  const {
+    value: enteredDate,
+    hasError: dateHasError,
+    isValid: enteredDateIsValid,
+    valueChangeHandler: dateChangeHandler,
+    valueBlurHandler: dateBlurHandler,
+    reset: resetDate
+  } = useInput((value) => new Date(value).toString() !== "Invalid Date");
+
+  // const [enteredName, setenteredName] = useState("");
+  // const [enteredAmount, setEnteredAmount] = useState("");
+  // const [enteredDate, setEnteredDate] = useState("");
+
+  // let [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
+  // let [enteredAmountIsValid, setEnteredAmountIsValid] = useState(true);
+  // let [enteredDateIsValid, setEnteredDateIsValid] = useState(true);
+
+  // const [nameTouched, setNameTouched] = useState(false);
+  // const [amountTouched, setAmountTouched] = useState(false);
+  // const [dateTouched, setDateTouched] = useState(false);
+
+  // const [formIsValid, setFormIsValid] = useState(false);
+
+  // const nameChangeHandler = (event) => {
+  //   setenteredName(event.target.value);
+
+  //   if (event.target.value.trim() !== "") {
+  //     setEnteredNameIsValid(true);
+  //     if (
+  //       !isEmpty(enteredName) &&
+  //       !isEmpty(enteredAmount) &&
+  //       isDate(enteredDate)
+  //     ) {
+  //       setFormIsValid(true);
+  //     }
+  //   }
+  // };
+
+  // const nameBlurHandler = (event) => {
+  //   setNameTouched(true);
+  //   if (enteredName.trim() === "") {
+  //     setEnteredNameIsValid(false);
+  //     setFormIsValid(false);
+  //     return;
+  //   }
+  // };
+
+  // const amountChangeHandler = (event) => {
+  //   setEnteredAmount(event.target.value);
+  //   if (event.target.value.trim() !== "") {
+  //     setEnteredAmountIsValid(true);
+  //     if (
+  //       !isEmpty(enteredName) &&
+  //       !isEmpty(enteredAmount) &&
+  //       isDate(enteredDate)
+  //     ) {
+  //       setFormIsValid(true);
+  //     }
+  //   }
+  // };
+
+  // const amountBlurHandler = (event) => {
+  //   setAmountTouched(true);
+  //   if (enteredAmount.trim() === "") {
+  //     setEnteredAmountIsValid(false);
+  //     setFormIsValid(false);
+  //     return;
+  //   }
+  // };
+
+  // const dateChangeHandler = (event) => {
+  //   setEnteredDate(event.target.value);
+  //   if (new Date(event.target.value).toString() !== "") {
+  //     setEnteredDateIsValid(true);
+  //     console.log("Valid");
+  //     if (
+  //       !isEmpty(enteredName) &&
+  //       !isEmpty(enteredAmount) &&
+  //       isDate(enteredDate)
+  //     ) {
+  //       setFormIsValid(true);
+  //     }
+  //   }
+  // };
+
+  // const dateBlurHandler = (event) => {
+  //   setDateTouched(true);
+
+  //   if (!isDate(enteredDate)) {
+  //     setEnteredDateIsValid(false);
+  //     setFormIsValid(false);
+  //     return;
+  //   }
+  // };
+
+  const saveExpenseDataHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData,
+      id: Math.random().toString(),
+    };
+    props.onAddExpense(expenseData);
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    // const enteredNameValue = enteredName;
+    // const enteredAmountValue = enteredAmount;
+    // const enteredDateValue = new Date(enteredDate);
+
+    // enteredNameIsValid = !isEmpty(enteredNameValue) && nameTouched;
+    // enteredAmountIsValid =
+    //   !isEmpty(enteredAmountValue) && +enteredAmount > 0 && amountTouched;
+    // enteredDateIsValid =
+     // enteredDateValue.toString() !== "Invalid Date" && dateTouched;
+
+    const expenseData = {
+      title: enteredName,
+      amount: +enteredAmount,
+      date: new Date(enteredDate),
+    };
+
+    saveExpenseDataHandler(expenseData);
+    resetName();
+    //setEnteredAmount("");
+    resetAmount();
+    // setEnteredDate("");
+    resetDate();
+    props.onCancel();
+  };
+
+  return (
+    <Modal onCancel={props.onCancel}>
+      <form onSubmit={submitHandler}>
+        <div className="new-expense__controls">
+          <div
+            className={`${classes.control} ${
+              !nameHasError ? "" : classes.invalid
+            }`}
+          >
+            <label>Name</label>
+            <input
+              type="text"
+              value={enteredName}
+              onChange={nameChangeHandler}
+              onBlur={nameBlurHandler}
+            />
+            {nameHasError && <p>Please enter a valid name</p>}
+          </div>
+          <div
+            className={`${classes.control} ${
+              !amountHasError ? "" : classes.invalid
+            }`}
+          >
+            <label>Amount</label>
+            <input
+              type="number"
+              min="0.01"
+              step="0.01"
+              value={enteredAmount}
+              onChange={amountChangeHandler}
+              onBlur={amountBlurHandler}
+            />
+            {amountHasError && <p>Please enter a valid amount</p>}
+          </div>
+          <div
+            className={`${classes.control} ${
+              !dateHasError ? "" : classes.invalid
+            }`}
+          >
+            <label>Date</label>
+            <input
+              type="date"
+              min="2022-01-01"
+              max="2024-12-31"
+              value={enteredDate}
+              onChange={dateChangeHandler}
+              onBlur={dateBlurHandler}
+            />
+            {dateHasError && <p>Please enter a valid date</p>}
+          </div>
+        </div>
+        <div className={classes.actions}>
+          <button type="button" onClick={props.onCancel}>
+            Cancel
+          </button>
+          <button type="submit" disabled={!(enteredNameIsValid && enteredAmountIsValid && enteredDateIsValid)}>
+            Add Expense
+          </button>
+        </div>
+      </form>
+    </Modal>
+  );
+};
+
+export default ExpenseForm;

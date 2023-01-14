@@ -1,0 +1,23 @@
+.budget {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: #4b4b4b;
+  height: 30%;
+}
+
+.budget button {
+  text-align: center;
+}
+
+.budget input {
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 50%;
+  max-width: 50%;
+}

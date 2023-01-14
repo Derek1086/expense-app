@@ -1,0 +1,23 @@
+.remaining {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: #4b4b4b;
+  height: 30%;
+}
+
+.remaining-alert {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background-color: rgb(176, 23, 23);
+  height: 20%;
+}

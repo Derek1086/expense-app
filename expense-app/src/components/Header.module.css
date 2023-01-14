@@ -1,0 +1,20 @@
+.head {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-weight: bold;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1rem;
+    font-size: .5rem;
+}
+
+.logo {
+    height: 100%;
+    width: 40px;
+    object-fit: contain;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
