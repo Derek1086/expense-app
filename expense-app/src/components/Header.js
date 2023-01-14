@@ -4,7 +4,7 @@ import github from "./github.png";
 
 const Header = () => {
   const openWindow = () => {
-    window.open("https://github.com/Derek1086/React-Budget-Manager/blob/main/README.md", "_blank", "noreferrer");
+    window.open("https://github.com/Derek1086/expense-app", "_blank", "noreferrer");
   };
 
   return (
