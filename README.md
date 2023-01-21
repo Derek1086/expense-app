@@ -15,6 +15,7 @@ To edit month, click the drop down next to **Filter by month** and select the mo
 
 ### Add Expense
 To add an expense, click the **Add New Expense** button
+
 ![alt-text](/expense-app/pics/addexpensebutton.png)
 
 ### Form
