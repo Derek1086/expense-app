@@ -7,3 +7,4 @@ Expense App is an app built with React.js to help manage your month-to-month exp
 ## How To Use
 ### Edit Budget
 To edit budget, click the **Edit** button on the left section next to the **Budget** card
+![alt-text](../../../Pictures/expense-app-pics/editbudget.png)
