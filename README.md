@@ -1,7 +1,7 @@
 # Expense App
-
 ## Description
 Expense App is an app built with React.js to help manage your month-to-month expenses
+Doesn't save your data, so a refresh will begin from scratch
 ## [View Here](https://react-practice-9e728.web.app/)
 
 ## How To Use
@@ -27,5 +27,7 @@ To remove an expense, click on the expense item in the list on the right section
 ![alt-text](/expense-app/pics/item.png)
 
 ### Pie Chart
-The pie chart will display your expenses and how much they take up your budget!
+The pie chart will display your expenses and how much they take up your budget
 ![alt-text](/expense-app/pics/chart.png)
+
+
