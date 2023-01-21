@@ -11,6 +11,15 @@ To edit budget, click the **Edit** button on the left section next to the **Budg
 
 ### Filter Month
 To edit month, click the drop down next to **Filter by month** and select the month to filter your expenses
+![alt-text](/expense-app/pics/filtermonth.png)
 
-### Add expense
-To add an expense
+### Add Expense
+To add an expense, click the **Add New Expense** button
+![alt-text](/expense-app/pics/addexpense.png)
+
+Fill out the form and click the **Add Expense** button
+![alt-text](/expense-app/pics/form.png)
+
+### Remove Expense
+To remove an expense, click on the expense item in the list on the right section
+![alt-text](/expense-app/pics/item.png)
