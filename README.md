@@ -28,4 +28,4 @@ To remove an expense, click on the expense item in the list on the right section
 
 ### Pie Chart
 The pie chart will display your expenses and how much they take up your budget!
-[alt-text](/expense-app/pics/chart.png)
+![alt-text](/expense-app/pics/chart.png)
